@@ -6,3 +6,5 @@ __pycache__
 app/
 test/
 *.json
+DocLayNet/
+*.ipynb
