@@ -1,0 +1,8 @@
+Dockerfile
+*.pdf
+*.ipynb_checkpoints
+*.pyc
+__pycache__
+app/
+test/
+*.json
