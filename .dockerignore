@@ -5,3 +5,4 @@ readme.md
 .gitignore
 *.pdf
 *.json
+misc/
