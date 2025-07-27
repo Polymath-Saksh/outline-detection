@@ -1,10 +1,9 @@
-Dockerfile
 *.pdf
 *.ipynb_checkpoints
 *.pyc
+*.ipynb
 __pycache__
 app/
 test/
-*.json
-DocLayNet/
-*.ipynb
+input/
+output/

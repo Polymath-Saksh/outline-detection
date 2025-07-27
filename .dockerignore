@@ -1,0 +1,7 @@
+app/
+input/
+output/
+readme.md
+.gitignore
+*.pdf
+*.json
