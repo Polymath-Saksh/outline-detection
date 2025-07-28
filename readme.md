@@ -124,8 +124,12 @@ Each output JSON file will have the following structure, found in the `output` d
 			"level": "H1|H2|H3",
 			"text": "<Heading Text>",
 			"page": "<Page Number>"
+		},
+		{
+			"level": "H1|H2|H3",
+			"text": "<Another Heading Text>",
+			"page": "<Page Number>"
 		}
-		// ...more headings...
 	]
 }
 ```
