@@ -1,8 +1,5 @@
 import pymupdf  # type: ignore[import]
 import pandas as pd # type: ignore[import]
-import json
-import glob
-import os
 
 def load_pdf(pdf_path):
     return pymupdf.open(pdf_path)
@@ -149,6 +146,7 @@ def merge_outline_fragments(filtered_df):
     # Return as DataFrame with original columns (including capitalization_ratio)
     if merged_rows:
         merged_df = pd.DataFrame(merged_rows)
+        
         # Ensure capitalization_ratio is present
         if 'capitalization_ratio' not in merged_df.columns:
             merged_df['capitalization_ratio'] = 0.0
@@ -166,6 +164,7 @@ def build_outline_json_from_merged(merged_df):
     # Get title (first 'title' found) with <= 15 words
     title_row = merged_df[(merged_df['outline_level'] == 'title') & (merged_df['text'].str.split().str.len() <= 15)]
     title = title_row['text'].iloc[0] if not title_row.empty else ""
+    
     # Map outline_level to H1/H2/H3, only if <= 15 words
     level_map = {'h1': 'H1', 'h2': 'H2', 'h3': 'H3'}
     outline = [

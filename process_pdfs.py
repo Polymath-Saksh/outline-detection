@@ -1,5 +1,5 @@
 import os
-from enhanced_pdf_extractor import process_pdf_enhanced
+from pdf_extractor import process_pdf_enhanced
 import json
 
 INPUT_DIR = '/app/input'

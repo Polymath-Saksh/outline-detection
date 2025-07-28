@@ -8,8 +8,7 @@ import pymupdf  # type: ignore[import]
 # Assuming r1a.utils is available in the execution environment
 from utils import extract_spans
 
-
-# 1. CROSS-PAGE FONT ANALYSIS - Unchanged
+# 1. CROSS-PAGE FONT ANALYSIS
 def analyze_fonts_globally(df: pd.DataFrame) -> Dict:
     """Analyze font patterns across the entire document for better consistency."""
     unique_sizes = sorted(df['size'].unique(), reverse=True)
@@ -37,7 +36,7 @@ def analyze_fonts_globally(df: pd.DataFrame) -> Dict:
         'total_spans': len(df)
     }
 
-# 2. OPTIMIZED POSITION FEATURE EXTRACTION - Unchanged
+# 2. OPTIMIZED POSITION FEATURE EXTRACTION
 def extract_position_features(df: pd.DataFrame) -> pd.DataFrame:
     """Extract position-based features from bounding boxes using vectorized operations."""
     df_enhanced = df.copy()
@@ -59,7 +58,7 @@ def extract_position_features(df: pd.DataFrame) -> pd.DataFrame:
         (page_max_margin - page_min_margin + 1e-6)
     return df_enhanced
 
-# 3. VECTORIZED LINGUISTIC & CONTEXT FEATURES - Unchanged
+# 3. VECTORIZED LINGUISTIC & CONTEXT FEATURES
 def apply_features(df: pd.DataFrame) -> pd.DataFrame:
     """Vectorized creation of linguistic and context features."""
     text_stripped = df['text'].str.strip()
@@ -80,7 +79,7 @@ def apply_features(df: pd.DataFrame) -> pd.DataFrame:
         1).index, 'large_gap_before'] = True
     return df_sorted.set_index('index').sort_index()
 
-# 4. HEADING/TITLE MERGING LOGIC - Unchanged
+# 4. HEADING/TITLE MERGING LOGIC
 def merge_candidates(candidates_df: pd.DataFrame, is_title: bool = False) -> List[Dict]:
     """Merges consecutive text spans that form a single heading or title."""
     if candidates_df.empty:
@@ -133,7 +132,7 @@ def merge_candidates(candidates_df: pd.DataFrame, is_title: bool = False) -> Lis
 
     return merged
 
-# 5. ADVANCED TITLE SCORING - Unchanged
+# 5. ADVANCED TITLE SCORING
 def score_title_candidate(candidate: Dict) -> float:
     """Calculates a score based on content and position to identify the true title."""
     text = candidate['text'].lower()
@@ -160,7 +159,7 @@ def score_title_candidate(candidate: Dict) -> float:
 
     return score
 
-# 6. MAIN PROCESSING FUNCTION (REWRITTEN FOR ACCURACY)
+# 6. MAIN PROCESSING FUNCTION 
 def process_pdf_enhanced(pdf_path: str) -> Dict:
     """Processes a PDF using advanced heuristics for high accuracy."""
     doc = pymupdf.open(pdf_path)

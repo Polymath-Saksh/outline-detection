@@ -1,7 +1,4 @@
 pymupdf
 numpy
 scipy
-matplotlib
-scikit-learn
 pandas
-scikit-image
