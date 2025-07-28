@@ -140,6 +140,10 @@ Each output JSON file will have the following structure, found in the `output` d
   - `text`: Heading text
   - `page`: Page number where the heading appears
 
+## Future Improvements
+
+We plan to incorporate **Ensemble Classifiers** to further improve outline detection accuracy. The outputs from the current classifier will be used as training data to build and refine these ensemble models, enabling more robust and reliable extraction of document structure.
+
 ## Acknowledgments
 
 This solution was realized with the support of Gemini, Perplexity, and GitHub Chat, which assisted the team in research, planning, implementation, and refining the solution and final submission.
