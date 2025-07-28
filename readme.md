@@ -1,4 +1,4 @@
-# Adobe India Hackathon: Outline Detector (Round 1A)
+# Adobe India Hackathon: Outline Detection (Round 1A)
 
 This repository contains the solution for Round 1A of the "Connecting the Dots" Hackathon by Team Sentinels.
 
@@ -11,6 +11,9 @@ The goal is to build a system that accepts a textual PDF file and extracts a str
 - [Nihal Pandey](https://github.com/nihalpandey)
 
 ## Approach
+
+![Model Architecture](model.png)
+[Link to the Architecture Diagram](https://app.eraser.io/workspace/VszXs6j3iKnbpX7qSieC?origin=share)
 
 Our solution employs a multi-stage, heuristic-based approach to accurately parse the structure of a PDF without relying on pre-trained models. This ensures the solution is lightweight, fast, and works entirely offline.
 
@@ -74,7 +77,7 @@ The solution is containerized using Docker for a consistent and reproducible env
 Navigate to the root directory (where the Dockerfile is located) and run:
 
 ```sh
-docker build --platform linux/amd64 -t outline-extractor:somerandomidentifier .
+docker build --platform linux/amd64 -t outline-detection:somerandomidentifier .
 ```
 
 ### 2. Expected Directory Structure
@@ -102,14 +105,63 @@ After building the image:
 3. Run the following command from the directory containing your `input` and `output` folders:
 
    ```sh
-   docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --network none outline-extractor:somerandomidentifier
+   docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --network none outline-detection:somerandomidentifier
    ```
 
 The script inside the container will process every `.pdf` file in `/app/input` and generate a corresponding `<filename>.json` in `/app/output`.
 
+---
+
+## Output File Format
+
+Each output JSON file will have the following structure, found in the `output` directory:
+
+````json
+{
+    "title": "<Document Title>",
+    "outline": [
+        {
+            "level": "H1|H2|H3",
+            "text": "<Heading Text>",
+            "page": "<Page Number>"
+        },
+        // ...more headings...
+    ]
+}
+
+```json
+{
+	"title": "<Document Title>",
+	"outline": [
+		{
+			"level": "H1|H2|H3",
+			"text": "<Heading Text>",
+			"page": "<Page Number>"
+		},
+		// ...more headings...
+		{
+			"level": "H1|H2|H3",
+			"text": "<Another Heading Text>",
+			"page": "<Page Number>"
+		}
+		// ...more headings...
+	]
+}
+````
+
+- `title`: The detected document title.
+- `outline`: Array of headings, each with:
+  - `level`: Heading level (`H1`, `H2`, or `H3`)
+  - `text`: Heading text
+  - `page`: Page number where the heading appears
+
+## Acknowledgments
+
+This solution was realized with the support of Gemini, Perplexity, and GitHub Chat, which assisted the team in research, planning, implementation, and refining the solution and final submission.
+
 ## Copyright
 
-© Team Sentinels (Saksham Kumar, Aloukik Joshi, Nihal Pandey).  
+© 2024 Team Sentinels (Saksham Kumar, Aloukik Joshi, Nihal Pandey).  
 All rights reserved. Team members possess exclusive rights to this solution, along with Adobe for the purpose of the competition.  
 Unauthorized copying, distribution, or use of this code or documentation is strictly prohibited and liable to legal action.
 
