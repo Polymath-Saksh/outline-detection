@@ -116,19 +116,6 @@ The script inside the container will process every `.pdf` file in `/app/input` a
 
 Each output JSON file will have the following structure, found in the `output` directory:
 
-````json
-{
-    "title": "<Document Title>",
-    "outline": [
-        {
-            "level": "H1|H2|H3",
-            "text": "<Heading Text>",
-            "page": "<Page Number>"
-        },
-        // ...more headings...
-    ]
-}
-
 ```json
 {
 	"title": "<Document Title>",
@@ -137,17 +124,11 @@ Each output JSON file will have the following structure, found in the `output` d
 			"level": "H1|H2|H3",
 			"text": "<Heading Text>",
 			"page": "<Page Number>"
-		},
-		// ...more headings...
-		{
-			"level": "H1|H2|H3",
-			"text": "<Another Heading Text>",
-			"page": "<Page Number>"
 		}
 		// ...more headings...
 	]
 }
-````
+```
 
 - `title`: The detected document title.
 - `outline`: Array of headings, each with:
