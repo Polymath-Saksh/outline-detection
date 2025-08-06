@@ -1,0 +1,23 @@
+# GitHub Copilot Configuration
+# Enable GitHub Copilot for this repository
+
+# Copilot settings
+copilot:
+  # Enable Copilot for all supported file types
+  enabled: true
+  
+  # Copilot Chat settings
+  chat:
+    enabled: true
+  
+  # Code completion settings  
+  completion:
+    enabled: true
+    
+  # File types to enable Copilot for
+  languages:
+    - python
+    - dockerfile
+    - markdown
+    - yaml
+    - json

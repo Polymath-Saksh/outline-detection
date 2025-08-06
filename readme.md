@@ -1,21 +1,19 @@
-# Adobe India Hackathon: Outline Detection (Round 1A)
+# PDF Outline Detection
 
-This repository contains the solution for Round 1A of the "Connecting the Dots" Hackathon by Team Sentinels.
+A lightweight, rule-based system that extracts structured outlines from PDF documents. The tool automatically identifies document titles and headings (H1, H2, H3) and outputs them in a clean JSON format.
 
-The goal is to build a system that accepts a textual PDF file and extracts a structured outline, including the document's Title and headings (H1, H2, H3), into a clean JSON format.
+## Features
 
-## Team Sentinels
+- **No AI Dependencies**: Uses rule-based heuristics instead of pre-trained models
+- **Lightweight & Fast**: Processes documents entirely offline
+- **Dockerized**: Consistent execution environment
+- **Structured Output**: Clean JSON format with titles and heading hierarchy
 
-- [Saksham Kumar](https://github.com/sakshamkumar04)
-- [Aloukik Joshi](https://github.com/aloukikjoshi)
-- [Nihal Pandey](https://github.com/nihalpandey)
-
-## Approach
+## Technical Approach
 
 ![Model Architecture](model.png)
-[Link to the Architecture Diagram](https://app.eraser.io/workspace/VszXs6j3iKnbpX7qSieC?origin=share)
 
-Our solution employs a multi-stage, heuristic-based approach to accurately parse the structure of a PDF without relying on pre-trained models. This ensures the solution is lightweight, fast, and works entirely offline.
+This solution employs a multi-stage, heuristic-based approach to accurately parse the structure of a PDF without relying on pre-trained models. This ensures the solution is lightweight, fast, and works entirely offline.
 
 ### 1. Initial Data Extraction
 
@@ -54,17 +52,16 @@ Our solution employs a multi-stage, heuristic-based approach to accurately parse
   - Title
   - Outline array with level, text, and page number for each heading.
 
-## Models or Libraries Used
+## Dependencies
 
-This solution is built entirely on rule-based heuristics and does **not** use any pre-trained machine learning models.
+This solution uses rule-based heuristics and does **not** require any pre-trained machine learning models.
 
-**Python libraries used:**
+**Python libraries:**
 
-- `pymupdf` : For PDF text extraction and metadata by an object-oriented approach.
-- `numpy` : For numerical operations and array manipulations.
-- `scipy` : For scientific computing and advanced mathematical functions.
-
-- `pandas` : For data manipulation and analysis, providing data structures like DataFrames.
+- `pymupdf` : For PDF text extraction and metadata processing
+- `numpy` : For numerical operations and array manipulations
+- `scipy` : For scientific computing and advanced mathematical functions
+- `pandas` : For data manipulation and analysis
 
 All dependencies are listed in [requirements.txt](requirements.txt) and are installed within the Docker container.
 
@@ -140,18 +137,13 @@ Each output JSON file will have the following structure, found in the `output` d
   - `text`: Heading text
   - `page`: Page number where the heading appears
 
-## Future Improvements
+## Future Enhancements
 
-We plan to incorporate **Ensemble Classifiers** to further improve outline detection accuracy. The outputs from the current classifier will be used as training data to build and refine these ensemble models, enabling more robust and reliable extraction of document structure.
+Plans include incorporating **Ensemble Classifiers** to further improve outline detection accuracy. The outputs from the current classifier can be used as training data to build and refine these ensemble models, enabling more robust and reliable extraction of document structure.
 
-## Acknowledgments
+## License
 
-This solution was realized with the support of Gemini, Perplexity, and GitHub Chat, which assisted the team in research, planning, implementation, and refining the solution and final submission.
-
-## Copyright
-
-© 2024 Team Sentinels (Saksham Kumar, Aloukik Joshi, Nihal Pandey).  
-All rights reserved. Team members possess exclusive rights to this solution, along with Adobe for the purpose of the competition.  
-Unauthorized copying, distribution, or use of this code or documentation is strictly prohibited and liable to legal action.
+© 2024 PDF Outline Detection Project.  
+This project is open source and available under standard open source licensing terms.
 
 ---
